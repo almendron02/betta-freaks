@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PageHero } from "@/components/storefront/page-hero";
 
 export const metadata: Metadata = { title: "Our Story" };
 
 export default function AboutPage() {
   return (
-    <section className="about-project page-shell">
+    <>
+      <PageHero eyebrow="Our story" title="About Betta Freaks" description="A U.S.-based betta shop focused on remarkable varieties and individually presented Betta splendens." image="/media/figma/about-betta.png" imageAlt="Blue and orange betta fish in profile" />
+    <section className="about-project page-shell editorial-about">
       <div className="about-project-title">
         <span>ABOUT</span>
         <span>BETTA FREAKS</span>
@@ -29,5 +32,6 @@ export default function AboutPage() {
         <Link href="/cart"><span>(04)</span><strong>Bag</strong></Link>
       </nav>
     </section>
+    </>
   );
 }

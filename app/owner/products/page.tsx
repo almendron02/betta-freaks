@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default async function OwnerProductsPage() {
   const access = await getOwnerAccess();
-  if (access.state === "signed_out") redirect("/auth/sign-in");
+  if (access.state === "signed_out") redirect("/auth/sign-in?next=/owner/products");
   if (access.state !== "authorized") redirect("/owner");
 
   const products = await getManagedProducts();

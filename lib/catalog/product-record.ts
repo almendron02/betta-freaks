@@ -89,6 +89,7 @@ export const mapProductRecord = (
       ? getPublicUrl(primary.storage_path)
       : "/media/betta-freaks-logo.png",
     imageAlt: primary?.alt_text ?? `${record.name} image pending`,
+    imagePosition: "50% 50%",
     imageTone: "natural",
     createdAt: record.created_at,
     mediaCount: media.length,

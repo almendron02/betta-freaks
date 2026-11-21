@@ -1,5 +1,6 @@
 import { ArrowLeft, PackageOpen } from "lucide-react";
 import Link from "next/link";
+import { PageHero } from "@/components/storefront/page-hero";
 
 export function ComingSoonCategory({
   eyebrow,
@@ -12,12 +13,7 @@ export function ComingSoonCategory({
 }) {
   return (
     <>
-      <section className="page-hero">
-        <div className="page-shell page-hero-grid">
-          <div><span className="eyebrow">{eyebrow}</span><h1>{title}</h1></div>
-          <p>{description}</p>
-        </div>
-      </section>
+      <PageHero eyebrow={eyebrow} title={title} description={description} compact />
       <section className="catalog-page page-shell">
         <div className="empty-state">
           <PackageOpen size={30} />

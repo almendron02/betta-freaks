@@ -1,0 +1,49 @@
+body:has(.gallery-home) { background: #fafaf8; overflow: hidden; }
+body:has(.gallery-home) .site-header, body:has(.gallery-home) .site-footer { display: none; }
+.gallery-home { position: fixed; inset: 0; background: #fafaf8; color: #171714; font-family: Arial, Helvetica, sans-serif; }
+.gallery-stage { position: absolute; inset: 105px 0 115px; overflow: hidden; touch-action: none; cursor: grab; outline-offset: -3px; }
+.gallery-stage:active { cursor: grabbing; }
+.gallery-backdrop { position: absolute; inset: 28px 0 0; background: #e4e4df; }
+.gallery-backdrop img { object-fit: cover; opacity: 0; transition: opacity 650ms ease; filter: saturate(.8) brightness(.83); }
+.gallery-backdrop img.is-active { opacity: 1; }
+.gallery-caption { position: absolute; inset: 0 0 auto; height: 28px; display: flex; justify-content: space-between; align-items: center; padding: 3px 22px; background: #eaeae6; font-size: 13px; z-index: 3; }
+.gallery-caption a { background: #171714; color: white; padding: 2px 6px; }
+.gallery-perspective { position: absolute; inset: 28px 0 0; perspective: 1250px; display: grid; place-items: center; pointer-events: none; }
+.gallery-ring { --radius: clamp(220px, 30vw, 480px); --rotation: 0deg; position: relative; width: clamp(100px, 13vw, 190px); height: clamp(140px, 18vw, 260px); transform-style: preserve-3d; transform: rotateX(-8deg) rotateY(var(--rotation)); will-change: transform; }
+.gallery-panel { position: absolute; inset: 0; backface-visibility: visible; background: #dcded9; box-shadow: 0 4px 25px #00000015; }
+.gallery-panel img { object-fit: cover; }
+.gallery-controls { position: absolute; bottom: 17px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; color: white; font-size: 11px; font-variant-numeric: tabular-nums; z-index: 4; }
+.gallery-controls button { border: 1px solid #ffffff65; background: #17171440; width: 38px; height: 38px; color: white; cursor: pointer; }
+.gallery-bottom-note { position: absolute; bottom: 34px; left: 22px; right: 22px; display: flex; justify-content: space-between; font-size: 11px; }
+.gallery-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.gallery-brand { position: fixed; top: 24px; left: 22px; z-index: 60; font: 500 16px Arial, sans-serif; letter-spacing: -.6px; color: #171714; }
+.gallery-edition { position: fixed; top: 27px; right: 22px; z-index: 60; font: 11px Arial, sans-serif; color: #171714; }
+.gallery-menu { position: fixed; z-index: 100; bottom: max(25px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); font-family: Arial, Helvetica, sans-serif; }
+.gallery-menu-toggle { display: flex; justify-content: space-between; gap: 42px; align-items: center; background: #171714; color: #fff; border: 0; min-height: 44px; padding: 0 17px; font-size: 13px; cursor: pointer; }
+.gallery-menu-links { position: absolute; bottom: 53px; left: 50%; transform: translateX(-50%); width: 260px; background: #171714; color: #fff; padding: 8px; box-shadow: 0 12px 40px #0002; }
+.gallery-menu-links a { display: flex; justify-content: space-between; padding: 14px 12px; border-bottom: 1px solid #ffffff25; font-size: 15px; }
+.gallery-menu-links a:hover, .gallery-menu-links a:focus-visible { background: #ffffff18; }
+.gallery-menu-links small { color: #aaa; font-size: 11px; }
+@media (max-width: 600px) {
+  .gallery-stage { inset: 25svh 0 22svh; }
+  .gallery-caption { padding-inline: 10px; font-size: 12px; }
+  .gallery-ring { --radius: 180px; width: 82px; height: 116px; }
+  .gallery-perspective { perspective: 850px; }
+  .gallery-bottom-note { bottom: 88px; left: 16px; right: 16px; font-size: 10px; }
+  .gallery-brand { top: 20px; left: 16px; }
+  .gallery-edition { top: 23px; right: 16px; font-size: 10px; }
+  .gallery-controls { bottom: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .gallery-backdrop img { transition: none; } }
+/* The featured portrait stays centered while the surrounding ring rotates. */
+@media (min-width: 601px) {
+  .gallery-stage { inset: 90px 0 105px; }
+  .gallery-backdrop { width: min(28vw, 420px); height: min(53vh, 510px); inset: 50% auto auto 50%; transform: translate(-50%, -50%); }
+  .gallery-caption { width: min(28vw, 420px); left: 50%; top: calc(50% - min(26.5vh, 255px) - 28px); transform: translateX(-50%); padding-inline: 5px; }
+  .gallery-ring { width: clamp(100px, 9vw, 140px); height: clamp(140px, 12.5vw, 196px); }
+  .gallery-controls { bottom: 5px; color: #171714; }
+  .gallery-controls button { color: #171714; border-color: #17171430; background: transparent; }
+}
+
+.gallery-stage { user-select: none; }
+.gallery-stage img { -webkit-user-drag: none; }
