@@ -3,7 +3,7 @@ body:has(.gallery-home) .site-footer { display: none; }
 .gallery-home { position: fixed; inset: 0; background: #fafaf8; color: #171714; font-family: Arial, Helvetica, sans-serif; }
 .gallery-stage { --carousel-width: clamp(230px, 27vw, 380px); --carousel-gap: 42px; position: absolute; inset: 85px 0 110px; overflow: hidden; touch-action: none; cursor: grab; outline-offset: -3px; user-select: none; }
 .gallery-stage:active { cursor: grabbing; }
-.carousel-card { position: absolute; top: 50%; left: 50%; width: var(--carousel-width); margin: 0; background: #e4e4df; transform: translate(-50%, -50%) translateX(calc(var(--slot) * (var(--carousel-width) + var(--carousel-gap)))); will-change: transform; }
+.carousel-card { position: absolute; top: calc(50% + 20px); left: 50%; width: var(--carousel-width); margin: 0; background: #e4e4df; transform: translate(-50%, -50%) translateX(calc(var(--slot) * (var(--carousel-width) + var(--carousel-gap)))); will-change: transform; }
 .carousel-caption { height: 48px; background: #171714; }
 .carousel-caption a { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #171714; color: white; padding: 10px 16px; font-size: 16px; line-height: 1.2; }
 .carousel-caption a:hover { background: #34342e; }
@@ -40,12 +40,12 @@ body:not(:has(.gallery-home)) .gallery-brand, body:not(:has(.gallery-home)) .gal
 .gallery-tabs { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 80; display: flex; gap: 4px; }
 .gallery-tabs button { border: 0; background: #eaeae6; padding: 7px 12px; font: 12px Arial, sans-serif; color: #171714; cursor: pointer; }
 .gallery-tabs button[aria-pressed=true] { background: #171714; color: #fafaf8; }
-@media(max-width:600px) { .gallery-tabs { top: 65px; } }
+@media(max-width:600px) { .gallery-tabs { top: 55px; } }
 
 .gallery-stage:focus { outline: none; }
 .gallery-stage:focus-visible { outline: none; }
 @media (min-width: 601px) {
-  .gallery-tabs { top: max(80px, calc(50svh - 24svh - 85px)); gap: 6px; }
+  .gallery-tabs { top: max(70px, calc(50svh - 24svh - 105px)); gap: 6px; }
   .gallery-tabs button { padding: 13px 25px; min-height: 46px; font-size: 16px; }
 }
 
