@@ -33,11 +33,11 @@ export function GalleryHome() {
     const pointer = { x: 0, y: 0 };
     const easedPointer = { x: 0, y: 0 };
     const draw = () => {
-      easedPointer.x += (pointer.x - easedPointer.x) * 0.075;
-      easedPointer.y += (pointer.y - easedPointer.y) * 0.075;
-      element.style.setProperty("--portrait-x", `${-easedPointer.y * 5}deg`);
-      element.style.setProperty("--portrait-y", `${easedPointer.x * 6}deg`);
-      element.style.setProperty("--reel-y", `${easedPointer.y * 32}px`);
+      easedPointer.x += (pointer.x - easedPointer.x) * 0.11;
+      easedPointer.y += (pointer.y - easedPointer.y) * 0.11;
+      element.style.setProperty("--portrait-x", `${-easedPointer.y * 12}deg`);
+      element.style.setProperty("--portrait-y", `${easedPointer.x * 15}deg`);
+      element.style.setProperty("--reel-y", `${easedPointer.y * 80}px`);
       rotation.current += (target.current - rotation.current) * (reduced.matches ? 1 : 0.085);
       if (Math.abs(target.current - rotation.current) < 0.01) rotation.current = target.current;
       ring.current?.style.setProperty("--rotation", `${rotation.current}deg`);

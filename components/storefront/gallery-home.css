@@ -11,7 +11,7 @@ body:has(.gallery-home) .site-header, body:has(.gallery-home) .site-footer { dis
 .gallery-perspective { position: absolute; inset: 0; perspective: 1250px; transform-style: preserve-3d; display: grid; place-items: center; pointer-events: none; }
 .gallery-feature { position: absolute; inset: 0; transform: rotateX(var(--portrait-x, 0deg)) rotateY(var(--portrait-y, 0deg)); background: #e4e4df; will-change: transform; }
 .gallery-feature a { pointer-events: auto; }
-.gallery-ring { --radius: clamp(220px, 30vw, 480px); --rotation: 0deg; position: relative; width: clamp(100px, 13vw, 190px); height: clamp(140px, 18vw, 260px); transform-style: preserve-3d; transform: translateY(var(--reel-y, 0px)) rotateX(-8deg) rotateY(var(--rotation)); will-change: transform; }
+.gallery-ring { --radius: clamp(220px, 30vw, 480px); --rotation: 0deg; position: relative; width: clamp(90px, 11.7vw, 171px); height: clamp(126px, 16.2vw, 234px); transform-style: preserve-3d; transform: translateY(var(--reel-y, 0px)) rotateX(-8deg) rotateY(var(--rotation)); will-change: transform; }
 .gallery-panel { position: absolute; inset: 0; backface-visibility: visible; background: #dcded9; box-shadow: 0 4px 25px #00000015; }
 .gallery-panel img { object-fit: cover; }
 .gallery-controls { position: absolute; bottom: 17px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; color: white; font-size: 11px; font-variant-numeric: tabular-nums; z-index: 4; }
@@ -29,7 +29,7 @@ body:has(.gallery-home) .site-header, body:has(.gallery-home) .site-footer { dis
 @media (max-width: 600px) {
   .gallery-stage { inset: 25svh 0 22svh; }
   .gallery-caption { padding-inline: 10px; font-size: 12px; }
-  .gallery-ring { --radius: 180px; width: 82px; height: 116px; }
+  .gallery-ring { --radius: 180px; width: 73.8px; height: 104.4px; }
   .gallery-perspective { perspective: 850px; }
   .gallery-bottom-note { bottom: 88px; left: 16px; right: 16px; font-size: 10px; }
   .gallery-brand { top: 20px; left: 16px; }
@@ -43,7 +43,7 @@ body:has(.gallery-home) .site-header, body:has(.gallery-home) .site-footer { dis
   .gallery-feature { width: min(28vw, 420px); height: calc(min(53vh, 510px) + 28px); inset: auto; }
   .gallery-backdrop { inset: 28px 0 0; }
   .gallery-caption { padding-inline: 5px; }
-  .gallery-ring { width: clamp(100px, 9vw, 140px); height: clamp(140px, 12.5vw, 196px); }
+  .gallery-ring { width: clamp(90px, 8.1vw, 126px); height: clamp(126px, 11.25vw, 176.4px); }
   .gallery-controls { bottom: 5px; color: #171714; }
   .gallery-controls button { color: #171714; border-color: #17171430; background: transparent; }
 }
