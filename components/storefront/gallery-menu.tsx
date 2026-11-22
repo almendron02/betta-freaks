@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { ShoppingBag } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -22,7 +23,7 @@ export function GalleryMenu() {
     return () => { document.removeEventListener("pointerdown", close); document.removeEventListener("keydown", escape); };
   }, [open]);
   return <>
-    <Link href="/" className="gallery-brand">Betta Freaks</Link>
+    <Link href="/" className="gallery-brand"><Image src="/media/betta-header-logo.png" alt="" width={32} height={32} /><span>Betta Freaks</span></Link>
     <span className="gallery-edition">Living color. Individual character.</span>
     <div className="gallery-menu" ref={root}>
       {open && <nav className="gallery-menu-links" id="gallery-navigation" aria-label="Main navigation">
