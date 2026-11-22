@@ -56,3 +56,10 @@ body:not(:has(.gallery-home)) .gallery-brand, body:not(:has(.gallery-home)) .gal
 .gallery-brand { display: inline-flex; align-items: center; gap: 9px; }
 .gallery-brand img { width: 32px; height: 32px; object-fit: contain; }
 @media (max-width: 600px) { .gallery-edition { display: none; } }
+
+.gallery-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 22px; z-index: 60; }
+.gallery-header .gallery-brand, .gallery-header .gallery-edition { position: static; background: transparent; box-shadow: none; }
+@media (max-width: 600px) {
+  .gallery-header { padding: 20px 16px; }
+  .gallery-brand img { display: none; }
+}
