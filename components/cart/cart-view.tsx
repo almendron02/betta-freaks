@@ -55,7 +55,7 @@ export function CartView() {
         <div className="cart-items">
           {items.map((item) => (
             <article className="cart-item" key={item.productId}>
-              <Link href={`/bettas/${item.slug}`} className="cart-item-image">
+              <Link href={item.productId.startsWith("preview-aquarium-") ? "/new-arrivals?category=aquariums" : item.productId.startsWith("preview-food-") ? "/new-arrivals?category=food" : `/bettas/${item.slug}`} className="cart-item-image">
                 <Image src={item.image} alt={item.imageAlt} fill sizes="110px" />
               </Link>
               <div className="cart-item-copy">
