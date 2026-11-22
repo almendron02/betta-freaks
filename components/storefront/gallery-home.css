@@ -52,3 +52,7 @@ body:not(:has(.gallery-home)) .gallery-brand, body:not(:has(.gallery-home)) .gal
 .gallery-bag-button { position: absolute; left: calc(100% + 8px); bottom: 0; width: 44px; height: 44px; display: grid; place-items: center; background: #171714; color: #fafaf8; }
 .gallery-bag-button:hover { background: #3a3a34; }
 .gallery-bag-count { position: absolute; top: -6px; right: -6px; min-width: 17px; height: 17px; padding: 0 3px; display: grid; place-items: center; background: #fafaf8; color: #171714; border: 1px solid #171714; font-size: 9px; line-height: 1; }
+
+.gallery-brand { display: inline-flex; align-items: center; gap: 9px; }
+.gallery-brand img { width: 32px; height: 32px; object-fit: contain; }
+@media (max-width: 600px) { .gallery-edition { display: none; } }
