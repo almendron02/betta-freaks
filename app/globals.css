@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root { --ink: #20221d; --muted: #65685e; --paper: #f2f0e8; --white: #fff; --canvas: #e5e6dc; --line: #b8bcac; --accent: #d66a32; --sans: var(--font-street-body), Arial, sans-serif; --display: var(--font-street-display), Arial, sans-serif; color-scheme: light; }
+:root { --ink: #20221d; --muted: #65685e; --paper: #f2f0e8; --white: #fff; --canvas: #e5e6dc; --line: #b8bcac; --accent: #171714; --sans: var(--font-street-body), Arial, sans-serif; --display: var(--font-street-display), Arial, sans-serif; color-scheme: light; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
@@ -306,10 +306,10 @@ input:not([type=checkbox]), textarea, select { border-radius: 6px; border-color:
 @media(max-width:600px) { .product-card, .story-card { box-shadow: 3px 3px 0 var(--ink); } }
 
 /* Restrained auburn finish. */
-:root { --paper: #f5f3ee; --canvas: #e9e7e0; --line: #d1cdc3; }
+:root { --paper: #fff3e9; --canvas: #f4e8df; --line: #d9cec5; }
 .page-intro .eyebrow { background: transparent; color: var(--accent); border: 0; padding: 0; border-radius: 0; box-shadow: none; }
 .button, .summary-checkout { box-shadow: none; border: 1px solid var(--accent); background: var(--accent); color: #fff9f3; border-radius: 5px; }
-.button:hover, .summary-checkout:hover { background: #b85125; color: #fff9f3; }
+.button:hover, .summary-checkout:hover { background: #33332e; color: #fff9f3; }
 .button-outline { background: transparent; color: var(--ink); border-color: var(--line); }
 .button-outline:hover { background: var(--canvas); color: var(--ink); }
 .product-card, .story-card, .intro-specimen, .contact-card, .auth-card, .account-panel, .owner-panel, .order-summary, .metric-card, .category-card, .product-detail-media { box-shadow: none; border: 1px solid var(--line); border-radius: 9px; }
