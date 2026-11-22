@@ -160,7 +160,6 @@ function GalleryCarousel({ pictures, category }: { pictures: typeof bettaPicture
         </div>
       </div>
       <div className="gallery-bottom-note"><span>Selected with intention.</span><span>Scroll or drag to explore ↔︎</span></div>
-      <h1 className="gallery-heading">Betta Freaks — individually selected betta fish</h1>
     </section>
   );
 }

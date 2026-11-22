@@ -69,3 +69,7 @@ body:not(:has(.gallery-home)) .gallery-brand, body:not(:has(.gallery-home)) .gal
   .gallery-heading { bottom: 155px; font-size: 19px; }
   .carousel-image { height: min(34svh, 320px); }
 }
+
+.gallery-quick-links { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 10px 20px; max-width: calc(100% - 230px); font-size: 12px; }
+.gallery-quick-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 600px) { .gallery-quick-links { display: none; } }
