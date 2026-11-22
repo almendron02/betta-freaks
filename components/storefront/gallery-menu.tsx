@@ -25,7 +25,12 @@ export function GalleryMenu() {
   return <>
     <header className="gallery-header">
     <Link href="/" className="gallery-brand"><Image src="/media/betta-header-logo.png" alt="" width={32} height={32} /><span>Betta Freaks</span></Link>
-    <span className="gallery-edition">Living color. Individual character.</span>
+    {pathname === "/" ? <nav className="gallery-quick-links" aria-label="Store information">
+      <Link href="/faq">FAQ ↗︎</Link><Link href="/shipping">Shipping ↗︎</Link>
+      <Link href="/live-arrival-guarantee">Live arrival ↗︎</Link><Link href="/store-credit-policy">Store credit ↗︎</Link>
+      <Link href="/accessories">Aquarium care ↗︎</Link><Link href="/live-foods">Live foods ↗︎</Link>
+      <Link href="/auth/sign-in?next=/owner">Owner sign in ↗︎</Link>
+    </nav> : <span className="gallery-edition">Living color. Individual character.</span>}
     </header>
     <div className="gallery-menu" ref={root}>
       {open && <nav className="gallery-menu-links" id="gallery-navigation" aria-label="Main navigation">
