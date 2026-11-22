@@ -47,15 +47,16 @@ function GalleryCarousel({ pictures, category }: { pictures: typeof bettaPicture
       for (const axis of ["x", "y", "presence"] as const) eased[axis] += (pointer[axis] - eased[axis]) * smoothing;
       const viewport = element.clientWidth;
       const lift = reduced.matches ? 0 : eased.y * 65;
+      const activeIndex = wrap(Math.round(position), pictures.length);
       cards.current.forEach((card, index) => {
         if (!card) return;
         // Recycle each card beyond the viewport; the track has no beginning or end.
         const distance = wrap(index - position + pictures.length / 2, pictures.length) - pictures.length / 2;
         const x = distance * pitch;
         const proximity = Math.max(0, 1 - Math.abs(x) / (viewport * 0.7));
-        const scale = 0.87 + 0.13 * proximity;
-        const tiltY = reduced.matches ? 0 : Math.max(-1, Math.min(1, (eased.x * viewport / 2 - x) / pitch)) * 14 * eased.presence;
-        const tiltX = reduced.matches ? 0 : -eased.y * 11;
+        const scale = 0.58 + 0.42 * proximity;
+        const tiltY = reduced.matches || index !== activeIndex ? 0 : Math.max(-1, Math.min(1, (eased.x * viewport / 2 - x) / pitch)) * 23 * eased.presence;
+        const tiltX = reduced.matches || index !== activeIndex ? 0 : -eased.y * 18;
         card.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${lift}px, 0) perspective(1200px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${scale})`;
         card.style.zIndex = String(Math.round(proximity * 10));
       });
@@ -148,7 +149,7 @@ function GalleryCarousel({ pictures, category }: { pictures: typeof bettaPicture
           <article className="carousel-card" key={picture.src} ref={node => { cards.current[i] = node; }}
             style={{ "--slot": i < pictures.length / 2 ? i : i - pictures.length } as CSSProperties}
             aria-roledescription="slide" aria-label={`${i + 1} of ${pictures.length}: ${picture.name}`}>
-            <div className="carousel-caption"><span>{picture.name}</span><Link href={`/new-arrivals?category=${category}`} tabIndex={active === i ? 0 : -1} aria-label={`View collection — ${picture.name}`}>View collection ↗︎</Link></div>
+            <div className="carousel-caption"><Link href={`/new-arrivals?category=${category}`} tabIndex={active === i ? 0 : -1} aria-label={`View collection — ${picture.name}`}>View Collection ↗︎</Link></div>
             <div className="carousel-image"><Image src={picture.src} alt={picture.alt} fill sizes="(max-width: 600px) 70vw, 380px" priority={i === 0} draggable={false} /></div>
           </article>
         ))}
@@ -159,7 +160,7 @@ function GalleryCarousel({ pictures, category }: { pictures: typeof bettaPicture
         </div>
       </div>
       <div className="gallery-bottom-note"><span>Selected with intention.</span><span>Scroll or drag to explore ↔︎</span></div>
-      <h1 className="gallery-sr-only">Betta Freaks — individually selected betta fish</h1>
+      <h1 className="gallery-heading">Betta Freaks — individually selected betta fish</h1>
     </section>
   );
 }
