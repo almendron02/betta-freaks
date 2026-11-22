@@ -30,6 +30,9 @@ body > main { min-height: 60vh; }
 .button svg, .summary-checkout svg { width: 16px; height: 16px; }
 .page-intro { padding-top: 145px; padding-bottom: 85px; display: grid; grid-template-columns: 1fr .65fr; align-items: center; gap: 100px; }
 .page-intro-copy { max-width: 660px; }
+.page-intro-text-only { display: block; }
+.page-intro-text-only .page-intro-copy { max-width: 780px; }
+.page-intro-compact.page-intro-text-only { padding-top: 135px; padding-bottom: 40px; }
 .page-intro-copy > p { margin-top: 25px; max-width: 420px; color: var(--muted); font-size: 14px; }
 .page-intro-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
 .page-intro-compact { display: block; padding-bottom: 60px; }

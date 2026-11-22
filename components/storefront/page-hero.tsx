@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export function PageHero({ eyebrow, title, description, image, imageAlt = "", actions, compact = false }: {
   eyebrow: string; title: string; description: string; image?: string; imageAlt?: string; actions?: ReactNode; compact?: boolean;
 }) {
-  return <section className={`page-intro page-shell${compact ? " page-intro-compact" : ""}`}>
+  return <section className={`page-intro page-shell${compact ? " page-intro-compact" : ""}${image ? " page-intro-with-image" : " page-intro-text-only"}`}>
     <div className="page-intro-copy">
       <span className="eyebrow">{eyebrow}</span>
       <h1>{title}</h1>

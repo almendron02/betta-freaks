@@ -12,7 +12,7 @@ export default async function NewArrivalsPage() {
 
   return (
     <>
-      <PageHero eyebrow="The collection" title="Find your fish." description="Fresh exact-fish listings, ordered from newest to oldest." image="/media/figma/nemo-galaxy.png" imageAlt="Nemo Galaxy HMPK betta" />
+      <PageHero eyebrow="The collection" title="Find your fish." description="Fresh exact-fish listings, ordered from newest to oldest." compact />
       <section className="catalog-page page-shell">
         {demoCatalog ? <div className="demo-notice"><strong>Preview</strong><span>Sample listings are shown until live inventory is connected.</span></div> : null}
         <ProductGrid products={products} />
