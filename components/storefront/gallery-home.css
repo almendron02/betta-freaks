@@ -36,3 +36,8 @@ body:has(.gallery-home) .site-footer { display: none; }
 
 body:not(:has(.gallery-home)) .gallery-brand, body:not(:has(.gallery-home)) .gallery-edition { background: #fafaf8; box-shadow: 0 0 0 8px #fafaf8; }
 .gallery-menu-links { max-height: calc(100dvh - 110px); overflow-y: auto; }
+
+.gallery-tabs { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 80; display: flex; gap: 4px; }
+.gallery-tabs button { border: 0; background: #eaeae6; padding: 7px 12px; font: 12px Arial, sans-serif; color: #171714; cursor: pointer; }
+.gallery-tabs button[aria-pressed=true] { background: #171714; color: #fafaf8; }
+@media(max-width:600px) { .gallery-tabs { top: 65px; } }

@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { sampleProducts } from "@/lib/catalog/sample-products";
 import "./gallery-home.css";
+import { aquariumImages } from "@/lib/catalog/display-items";
 
-const pictures = [
+const bettaPictures = [
   ...sampleProducts.map((p) => ({ src: p.image, alt: p.imageAlt, name: p.shortName })),
   { src: "/media/figma/about-betta.png", alt: "Blue and orange betta in profile", name: "Color in motion" },
   { src: "/media/figma/hero-betta-v2.png", alt: "Multicolor betta fish", name: "One of a kind" },
@@ -15,6 +16,11 @@ const pictures = [
 const wrap = (value: number, length: number) => ((value % length) + length) % length;
 
 export function GalleryHome() {
+  const [category, setCategory] = useState("bettas");
+  return <><nav className="gallery-tabs" aria-label="Gallery category">{["bettas", "aquariums"].map(value => <button key={value} aria-pressed={category === value} onClick={() => setCategory(value)}>{value === "bettas" ? "Bettas" : "Aquariums"}</button>)}</nav><GalleryCarousel key={category} pictures={category === "bettas" ? bettaPictures : aquariumImages} category={category} /></>;
+}
+
+function GalleryCarousel({ pictures, category }: { pictures: typeof bettaPictures; category: string }) {
   const stage = useRef<HTMLDivElement>(null);
   const cards = useRef<(HTMLElement | null)[]>([]);
   const [active, setActive] = useState(0);
@@ -132,7 +138,7 @@ export function GalleryHome() {
       element.removeEventListener("keydown", key);
       element.removeEventListener("gallery-step", select);
     };
-  }, []);
+  }, [pictures]);
 
   const advance = (direction: number) => stage.current?.dispatchEvent(new CustomEvent("gallery-step", { detail: direction }));
   return (
@@ -142,7 +148,7 @@ export function GalleryHome() {
           <article className="carousel-card" key={picture.src} ref={node => { cards.current[i] = node; }}
             style={{ "--slot": i < pictures.length / 2 ? i : i - pictures.length } as CSSProperties}
             aria-roledescription="slide" aria-label={`${i + 1} of ${pictures.length}: ${picture.name}`}>
-            <div className="carousel-caption"><span>{picture.name}</span><Link href="/new-arrivals" tabIndex={active === i ? 0 : -1} aria-label={`View collection — ${picture.name}`}>View collection ↗</Link></div>
+            <div className="carousel-caption"><span>{picture.name}</span><Link href={`/new-arrivals?category=${category}`} tabIndex={active === i ? 0 : -1} aria-label={`View collection — ${picture.name}`}>View collection ↗</Link></div>
             <div className="carousel-image"><Image src={picture.src} alt={picture.alt} fill sizes="(max-width: 600px) 70vw, 380px" priority={i === 0} draggable={false} /></div>
           </article>
         ))}

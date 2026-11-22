@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+import { aquariumImages, foodImages } from "@/lib/catalog/display-items";
 import type { Metadata } from "next";
 
 import { ProductGrid } from "@/components/storefront/product-grid";
@@ -6,16 +9,20 @@ import { getStorefrontProducts, isUsingDemoCatalog } from "@/lib/catalog/storefr
 
 export const metadata: Metadata = { title: "Collection" };
 
-export default async function NewArrivalsPage() {
+export default async function NewArrivalsPage({ searchParams }: PageProps<"/new-arrivals">) {
+  const params = await searchParams;
+  const category = ["bettas", "aquariums", "food"].includes(String(params.category)) ? String(params.category) : "all";
   const products = await getStorefrontProducts({ type: "fish", newestFirst: true });
   const demoCatalog = isUsingDemoCatalog();
 
   return (
     <>
-      <PageHero eyebrow="The collection" title="Find your fish." description="Fresh exact-fish listings, ordered from newest to oldest." compact />
+      <PageHero eyebrow="The collection" title="The collection." description="Explore bettas, aquariums, and food." compact />
       <section className="catalog-page page-shell">
         {demoCatalog ? <div className="demo-notice"><strong>Preview</strong><span>Sample listings are shown until live inventory is connected.</span></div> : null}
-        <ProductGrid products={products} />
+        <nav className="collection-filters" aria-label="Collection category">{["all", "bettas", "aquariums", "food"].map(value => <Link href={`/new-arrivals?category=${value}`} key={value} aria-current={category === value ? "page" : undefined}>{value[0].toUpperCase() + value.slice(1)}</Link>)}</nav>
+        {(category === "all" || category === "bettas") && <ProductGrid products={products} />}
+        {(category === "all" || category === "aquariums" || category === "food") && <div className="product-grid display-products">{[...(category !== "food" ? aquariumImages : []), ...(category !== "aquariums" ? foodImages : [])].map(item => <article className="product-card" key={item.src}><div className="card-label"><span>{item.name}</span><span>Preview</span></div><div className="product-image-frame"><Image src={item.src} alt={item.alt} fill sizes="(max-width:720px) 100vw, 33vw" style={{objectFit:"contain"}} /></div><div className="card-facts"><span>Details coming soon</span></div></article>)}</div>}
       </section>
     </>
   );

@@ -264,3 +264,8 @@ textarea { min-height: 120px; resize: vertical; }
   html { scroll-behavior: auto; }
   [data-tilt], .product-card, .auth-card, .metric-card, .account-panel, .owner-panel, .order-summary, .product-detail-media, .category-card { transform: none; transition: none; }
 }
+
+.collection-filters { display: flex; gap: 6px; margin-bottom: 32px; }
+.collection-filters a { padding: 8px 16px; background: var(--canvas); font-size: 12px; }
+.collection-filters a[aria-current=page] { background: var(--ink); color: var(--paper); }
+.display-products { margin-top: 58px; }
