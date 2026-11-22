@@ -111,7 +111,7 @@ body:not(:has(.gallery-home)) .gallery-header .gallery-brand, body:not(:has(.gal
 .carousel-card { border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 10px 28px #30251b0b; }
 .carousel-caption, .carousel-caption a { background: var(--accent); color: #fff9f3; }
 .carousel-caption { border-bottom: 0; }
-.carousel-caption a:hover { background: #873c23; }
+.carousel-caption a:hover { background: #b85125; }
 .gallery-tabs button { border: 1px solid var(--line); border-radius: 5px; }
 .gallery-tabs button[aria-pressed=true] { background: var(--accent); color: #fff9f3; border-color: var(--accent); box-shadow: none; }
 .gallery-menu-toggle, .gallery-bag-button { box-shadow: none; border: 1px solid var(--ink); border-radius: 6px; }
