@@ -57,7 +57,7 @@ export default async function ProductPage({ params }: Props) {
           </div>
           <div className="detail-accordions">
             <details open>
-              <summary>Fish details <span aria-hidden="true">↘</span></summary>
+              <summary>Fish details <span aria-hidden="true">↘︎</span></summary>
               <dl className="detail-specs">
                 <div><dt>Variety</dt><dd>{product.variety ?? "—"}</dd></div>
                 <div><dt>Color</dt><dd>{product.color ?? "—"}</dd></div>
@@ -66,11 +66,11 @@ export default async function ProductPage({ params }: Props) {
               </dl>
             </details>
             <details>
-              <summary>Delivery <span aria-hidden="true">↘</span></summary>
+              <summary>Delivery <span aria-hidden="true">↘︎</span></summary>
               <p>Weather-aware shipping details are confirmed before dispatch.</p>
             </details>
             <details>
-              <summary>Live arrival <span aria-hidden="true">↘</span></summary>
+              <summary>Live arrival <span aria-hidden="true">↘︎</span></summary>
               <p>Review the live arrival guarantee before placing an order.</p>
             </details>
           </div>

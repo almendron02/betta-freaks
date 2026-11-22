@@ -7,7 +7,7 @@ import type { Product } from "@/lib/commerce/types";
 export function ProductCard({ product, showcase = false }: { product: Product; showcase?: boolean }) {
   return <article className="product-card">
     <Link href={`/bettas/${product.slug}`} className="product-media">
-      <div className="card-label"><span>{product.shortName}</span><span>↗</span></div>
+      <div className="card-label"><span>{product.shortName}</span><span>↗︎</span></div>
       <div className="product-image-frame"><Image src={product.image} alt={product.imageAlt} fill sizes="(max-width: 720px) 100vw, 33vw" style={{ objectPosition: product.imagePosition ?? "50% 50%" }} /></div>
     </Link>
     <div className="product-card-body">

@@ -12,7 +12,7 @@ export function PageHero({ eyebrow, title, description, image, imageAlt = "", ac
       {actions && <div className="page-intro-actions">{actions}</div>}
     </div>
     {image && <figure className="intro-specimen" data-tilt>
-      <figcaption><span>Betta splendens</span><span>↗</span></figcaption>
+      <figcaption><span>Betta splendens</span><span>↗︎</span></figcaption>
       <div><Image src={image} alt={imageAlt} fill loading="eager" sizes="(max-width: 720px) 70vw, 24vw" /></div>
     </figure>}
   </section>;

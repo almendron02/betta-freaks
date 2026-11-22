@@ -29,7 +29,7 @@ export function GalleryMenu() {
     </header>
     <div className="gallery-menu" ref={root}>
       {open && <nav className="gallery-menu-links" id="gallery-navigation" aria-label="Main navigation">
-        {[["/", "Gallery"], ["/new-arrivals", "Collection"], ["/about", "About"], ["/contact", "Contact"], ["/account", "Account"], ["/cart", `Bag (${hydrated ? itemCount : 0})`]].map(([href, label], i) => <Link key={href} href={href} onClick={() => setOpen(false)} aria-current={pathname === href ? "page" : undefined}><span>{label}</span><small>0{i + 1} ↗</small></Link>)}
+        {[["/", "Gallery"], ["/new-arrivals", "Collection"], ["/about", "About"], ["/contact", "Contact"], ["/account", "Account"], ["/cart", `Bag (${hydrated ? itemCount : 0})`]].map(([href, label], i) => <Link key={href} href={href} onClick={() => setOpen(false)} aria-current={pathname === href ? "page" : undefined}><span>{label}</span><small>0{i + 1} ↗︎</small></Link>)}
       </nav>}
       <button ref={button} className="gallery-menu-toggle" aria-expanded={open} aria-controls="gallery-navigation" onClick={() => setOpen(!open)}>{open ? "Close" : "Menu"}<span aria-hidden="true">{open ? "−" : "+"}</span></button>
       <Link href="/cart" className="gallery-bag-button" aria-label={`View bag, ${hydrated ? itemCount : 0} items`} onClick={() => setOpen(false)}>
