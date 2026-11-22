@@ -22,7 +22,7 @@ body:has(.gallery-home) .site-footer { display: none; }
 .gallery-menu-links a:hover, .gallery-menu-links a:focus-visible { background: #ffffff18; }
 .gallery-menu-links small { color: #aaa; font-size: 11px; }
 @media (max-width: 600px) {
-  .gallery-stage { --carousel-width: 70vw; --carousel-gap: 22px; inset: 100px 0 230px; }
+  .gallery-stage { --carousel-width: 70vw; --carousel-gap: 8px; inset: 100px 0 230px; }
   .carousel-caption a { font-size: 16px; }
   .carousel-image { height: min(44svh, 390px); }
   .gallery-bottom-note { bottom: 105px; left: 16px; right: 16px; font-size: 12px; }
@@ -73,3 +73,7 @@ body:not(:has(.gallery-home)) .gallery-brand, body:not(:has(.gallery-home)) .gal
 .gallery-quick-links { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 10px 20px; max-width: calc(100% - 230px); font-size: 12px; }
 .gallery-quick-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 600px) { .gallery-quick-links { display: none; } }
+
+@media (max-width: 600px) {
+  .gallery-controls { position: fixed; bottom: 155px; }
+}

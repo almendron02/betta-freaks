@@ -46,7 +46,7 @@ function GalleryCarousel({ pictures, category }: { pictures: typeof bettaPicture
       if (Math.abs(target - position) < 0.0001) position = target;
       for (const axis of ["x", "y", "presence"] as const) eased[axis] += (pointer[axis] - eased[axis]) * smoothing;
       const viewport = element.clientWidth;
-      const lift = reduced.matches ? 0 : eased.y * 65;
+      const lift = reduced.matches ? 0 : eased.y * 28;
       const activeIndex = wrap(Math.round(position), pictures.length);
       cards.current.forEach((card, index) => {
         if (!card) return;
@@ -55,8 +55,8 @@ function GalleryCarousel({ pictures, category }: { pictures: typeof bettaPicture
         const x = distance * pitch;
         const proximity = Math.max(0, 1 - Math.abs(x) / (viewport * 0.7));
         const scale = 0.58 + 0.42 * proximity;
-        const tiltY = reduced.matches || index !== activeIndex ? 0 : Math.max(-1, Math.min(1, (eased.x * viewport / 2 - x) / pitch)) * 23 * eased.presence;
-        const tiltX = reduced.matches || index !== activeIndex ? 0 : -eased.y * 18;
+        const tiltY = reduced.matches || index !== activeIndex ? 0 : Math.max(-1, Math.min(1, (eased.x * viewport / 2 - x) / pitch)) * 19 * eased.presence;
+        const tiltX = reduced.matches || index !== activeIndex ? 0 : -eased.y * 15;
         card.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${lift}px, 0) perspective(1200px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${scale})`;
         card.style.zIndex = String(Math.round(proximity * 10));
       });
