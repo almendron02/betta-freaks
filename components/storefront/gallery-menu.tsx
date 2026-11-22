@@ -23,8 +23,10 @@ export function GalleryMenu() {
     return () => { document.removeEventListener("pointerdown", close); document.removeEventListener("keydown", escape); };
   }, [open]);
   return <>
+    <header className="gallery-header">
     <Link href="/" className="gallery-brand"><Image src="/media/betta-header-logo.png" alt="" width={32} height={32} /><span>Betta Freaks</span></Link>
     <span className="gallery-edition">Living color. Individual character.</span>
+    </header>
     <div className="gallery-menu" ref={root}>
       {open && <nav className="gallery-menu-links" id="gallery-navigation" aria-label="Main navigation">
         {[["/", "Gallery"], ["/new-arrivals", "Collection"], ["/about", "About"], ["/contact", "Contact"], ["/account", "Account"], ["/cart", `Bag (${hydrated ? itemCount : 0})`]].map(([href, label], i) => <Link key={href} href={href} onClick={() => setOpen(false)} aria-current={pathname === href ? "page" : undefined}><span>{label}</span><small>0{i + 1} ↗</small></Link>)}
