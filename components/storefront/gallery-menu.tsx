@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { ShoppingBag } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useCart } from "@/components/cart/cart-provider";
@@ -28,6 +29,10 @@ export function GalleryMenu() {
         {[["/", "Gallery"], ["/new-arrivals", "Collection"], ["/about", "About"], ["/contact", "Contact"], ["/account", "Account"], ["/cart", `Bag (${hydrated ? itemCount : 0})`]].map(([href, label], i) => <Link key={href} href={href} onClick={() => setOpen(false)} aria-current={pathname === href ? "page" : undefined}><span>{label}</span><small>0{i + 1} ↗</small></Link>)}
       </nav>}
       <button ref={button} className="gallery-menu-toggle" aria-expanded={open} aria-controls="gallery-navigation" onClick={() => setOpen(!open)}>{open ? "Close" : "Menu"}<span aria-hidden="true">{open ? "−" : "+"}</span></button>
+      <Link href="/cart" className="gallery-bag-button" aria-label={`View bag, ${hydrated ? itemCount : 0} items`} onClick={() => setOpen(false)}>
+        <ShoppingBag size={19} strokeWidth={1.5} aria-hidden="true" />
+        {hydrated && itemCount > 0 && <span className="gallery-bag-count" aria-hidden="true">{itemCount}</span>}
+      </Link>
     </div>
   </>;
 }
