@@ -77,3 +77,32 @@ body:not(:has(.gallery-home)) .gallery-brand, body:not(:has(.gallery-home)) .gal
 @media (max-width: 600px) {
   .gallery-controls { position: fixed; bottom: 155px; }
 }
+
+/* Gallery chrome follows the same street-print palette as the store. */
+body:has(.gallery-home), .gallery-home { background: var(--paper); color: var(--ink); font-family: var(--sans); }
+.gallery-home { background-image: radial-gradient(#20221d18 .65px, transparent .65px); background-size: 8px 8px; }
+.carousel-card { border: 2px solid var(--ink); border-radius: 14px; overflow: hidden; box-shadow: 7px 7px 0 var(--ink); background: var(--canvas); }
+.carousel-caption, .carousel-caption a { background: var(--accent); color: var(--ink); }
+.carousel-caption { border-bottom: 2px solid var(--ink); }
+.carousel-caption a { font-family: var(--sans); font-weight: 800; text-transform: uppercase; letter-spacing: .045em; }
+.carousel-caption a:hover { background: #ffc397; }
+.carousel-image img { filter: none; }
+.gallery-header .gallery-brand { font-family: var(--display); font-size: 17px; text-transform: uppercase; letter-spacing: -.055em; color: var(--ink); background: transparent; box-shadow: none; }
+.gallery-menu { font-family: var(--sans); }
+.gallery-menu-toggle, .gallery-bag-button { background: var(--ink); border: 1.5px solid var(--ink); border-radius: 8px; box-shadow: 3px 3px 0 var(--accent); color: var(--paper); }
+.gallery-menu-toggle { font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+.gallery-menu-links { border: 2px solid var(--ink); border-radius: 10px; box-shadow: 5px 5px 0 var(--accent); background: var(--ink); }
+.gallery-menu-links a { font-weight: 600; }
+.gallery-menu-links a:hover { color: var(--accent); }
+.gallery-tabs button { font-family: var(--sans); font-weight: 800; border: 1.5px solid var(--ink); border-radius: 7px; background: var(--paper); color: var(--ink); text-transform: uppercase; letter-spacing: .04em; }
+.gallery-tabs button[aria-pressed=true] { background: var(--accent); color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+.gallery-controls { font-family: var(--sans); font-weight: 800; }
+.gallery-controls button { border: 1.5px solid var(--ink); border-radius: 6px; box-shadow: 2px 2px 0 var(--ink); background: var(--paper); color: var(--ink); }
+.gallery-controls button:hover { background: var(--accent); }
+.gallery-bottom-note { font-weight: 600; }
+.gallery-quick-links { font-weight: 600; }
+.gallery-quick-links a:hover { color: #954517; }
+@media(max-width:600px) { .carousel-card { box-shadow: 4px 4px 0 var(--ink); } .gallery-header .gallery-brand { font-size: 16px; } }
+@media (min-width: 601px) { .gallery-controls { position: fixed; bottom: 110px; } }
+
+body:not(:has(.gallery-home)) .gallery-header .gallery-brand, body:not(:has(.gallery-home)) .gallery-header .gallery-edition { background: transparent; box-shadow: none; }

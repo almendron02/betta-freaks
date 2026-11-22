@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root { --ink: #171714; --muted: #72726c; --paper: #fafaf8; --white: #fff; --canvas: #eeeee9; --line: #dcdcd5; --sans: Arial, Helvetica, sans-serif; color-scheme: light; }
+:root { --ink: #20221d; --muted: #65685e; --paper: #f2f0e8; --white: #fff; --canvas: #e5e6dc; --line: #b8bcac; --accent: #ffb074; --sans: var(--font-street-body), Arial, sans-serif; --display: var(--font-street-display), Arial, sans-serif; color-scheme: light; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
@@ -269,3 +269,38 @@ textarea { min-height: 120px; resize: vertical; }
 .collection-filters a { padding: 8px 16px; background: var(--canvas); font-size: 12px; }
 .collection-filters a[aria-current=page] { background: var(--ink); color: var(--paper); }
 .display-products { margin-top: 58px; }
+
+/* Bold type, printed labels, and warm orange details across the storefront. */
+::selection { background: var(--accent); color: var(--ink); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; letter-spacing: -.045em; }
+h1 { text-transform: uppercase; font-size: clamp(36px, 5.1vw, 72px); line-height: 1.02; }
+h2 { font-size: clamp(23px, 2.25vw, 32px); }
+strong { font-weight: 600; }
+.eyebrow, .section-label, .product-overline { font-family: var(--sans); font-weight: 800; text-transform: uppercase; letter-spacing: .09em; color: var(--ink); }
+.page-intro .eyebrow { display: inline-block; padding: 5px 9px; border: 1px solid var(--ink); border-radius: 4px; background: var(--accent); box-shadow: 2px 2px 0 var(--ink); }
+.button, .summary-checkout { border: 1.5px solid var(--ink); border-radius: 7px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; box-shadow: 3px 3px 0 var(--ink); background: var(--accent); color: var(--ink); }
+.button:hover, .summary-checkout:hover { background: #ffc397; color: var(--ink); }
+.button-outline { background: var(--paper); }
+.product-card, .story-card, .intro-specimen { border: 1.5px solid var(--ink); border-radius: 12px; background: var(--paper); box-shadow: 5px 5px 0 #20221d; }
+.product-media, .story-image, .intro-specimen > div { overflow: hidden; }
+.product-media { border-radius: 10px 10px 0 0; }
+.card-label, .intro-specimen figcaption { padding: 10px 12px; background: var(--accent); color: var(--ink); font-weight: 800; text-transform: uppercase; border-bottom: 1.5px solid var(--ink); }
+.story-card > .card-label, .intro-specimen figcaption { border-radius: 10px 10px 0 0; }
+.product-card-body { padding: 16px; }
+.product-card-body .button { background: var(--ink); color: var(--paper); box-shadow: 2px 2px 0 var(--accent); }
+.card-facts { font-weight: 600; }
+.story-card > h2, .story-card > p, .story-card > .text-link { margin-left: 22px; margin-right: 22px; }
+.story-card { padding-bottom: 25px; }
+.contact-card, .auth-card, .account-panel, .owner-panel, .order-summary, .metric-card, .category-card { border: 1.5px solid var(--ink); border-radius: 12px; box-shadow: 4px 4px 0 #20221d; }
+.contact-card .card-label { border: 0; background: transparent; }
+.product-detail-media { border: 1.5px solid var(--ink); border-radius: 12px; overflow: hidden; box-shadow: 5px 5px 0 var(--ink); }
+input:not([type=checkbox]), textarea, select { border-radius: 6px; border-color: var(--line); }
+.collection-filters a { border: 1.5px solid var(--ink); border-radius: 6px; font-weight: 800; text-transform: uppercase; }
+.collection-filters a[aria-current=page] { background: var(--accent); color: var(--ink); box-shadow: 2px 2px 0 var(--ink); }
+.site-footer { border-top: 2px solid var(--ink); }
+.site-footer > div > span { font-family: var(--display); text-transform: uppercase; }
+.faq-item { border-top: 2px solid var(--ink); }
+.faq-item button { font-weight: 600; }
+.faq-item.is-open { background: var(--canvas); padding-inline: 16px; border-radius: 0 0 8px 8px; }
+.demo-notice, .owner-note, .policy-callout, .form-message { border-radius: 6px; border-color: var(--ink); }
+@media(max-width:600px) { .product-card, .story-card { box-shadow: 3px 3px 0 var(--ink); } }
