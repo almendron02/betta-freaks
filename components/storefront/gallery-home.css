@@ -106,3 +106,16 @@ body:has(.gallery-home), .gallery-home { background: var(--paper); color: var(--
 @media (min-width: 601px) { .gallery-controls { position: fixed; bottom: 110px; } }
 
 body:not(:has(.gallery-home)) .gallery-header .gallery-brand, body:not(:has(.gallery-home)) .gallery-header .gallery-edition { background: transparent; box-shadow: none; }
+
+.gallery-home { background-image: none; }
+.carousel-card { border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 10px 28px #30251b0b; }
+.carousel-caption, .carousel-caption a { background: var(--accent); color: #fff9f3; }
+.carousel-caption { border-bottom: 0; }
+.carousel-caption a:hover { background: #873c23; }
+.gallery-tabs button { border: 1px solid var(--line); border-radius: 5px; }
+.gallery-tabs button[aria-pressed=true] { background: var(--accent); color: #fff9f3; border-color: var(--accent); box-shadow: none; }
+.gallery-menu-toggle, .gallery-bag-button { box-shadow: none; border: 1px solid var(--ink); border-radius: 6px; }
+.gallery-menu-links { box-shadow: 0 12px 30px #00000014; border: 1px solid var(--ink); border-radius: 8px; }
+.gallery-menu-links a:hover { color: #dca88f; }
+.gallery-controls button { box-shadow: none; border: 1px solid var(--line); border-radius: 5px; }
+.gallery-controls button:hover { background: var(--canvas); }
