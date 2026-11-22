@@ -148,7 +148,7 @@ function GalleryCarousel({ pictures, category }: { pictures: typeof bettaPicture
           <article className="carousel-card" key={picture.src} ref={node => { cards.current[i] = node; }}
             style={{ "--slot": i < pictures.length / 2 ? i : i - pictures.length } as CSSProperties}
             aria-roledescription="slide" aria-label={`${i + 1} of ${pictures.length}: ${picture.name}`}>
-            <div className="carousel-caption"><span>{picture.name}</span><Link href={`/new-arrivals?category=${category}`} tabIndex={active === i ? 0 : -1} aria-label={`View collection — ${picture.name}`}>View collection ↗</Link></div>
+            <div className="carousel-caption"><span>{picture.name}</span><Link href={`/new-arrivals?category=${category}`} tabIndex={active === i ? 0 : -1} aria-label={`View collection — ${picture.name}`}>View collection ↗︎</Link></div>
             <div className="carousel-image"><Image src={picture.src} alt={picture.alt} fill sizes="(max-width: 600px) 70vw, 380px" priority={i === 0} draggable={false} /></div>
           </article>
         ))}
@@ -158,7 +158,7 @@ function GalleryCarousel({ pictures, category }: { pictures: typeof bettaPicture
           <button onClick={() => advance(1)} aria-label="Next photo">→</button>
         </div>
       </div>
-      <div className="gallery-bottom-note"><span>Selected with intention.</span><span>Scroll or drag to explore ↔</span></div>
+      <div className="gallery-bottom-note"><span>Selected with intention.</span><span>Scroll or drag to explore ↔︎</span></div>
       <h1 className="gallery-sr-only">Betta Freaks — individually selected betta fish</h1>
     </section>
   );
