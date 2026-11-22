@@ -1,3 +1,4 @@
+import { formatUsd } from "@/lib/commerce/money";
 import Image from "next/image";
 import Link from "next/link";
 import { aquariumImages, foodImages } from "@/lib/catalog/display-items";
@@ -22,7 +23,7 @@ export default async function NewArrivalsPage({ searchParams }: PageProps<"/new-
         {demoCatalog ? <div className="demo-notice"><strong>Preview</strong><span>Sample listings are shown until live inventory is connected.</span></div> : null}
         <nav className="collection-filters" aria-label="Collection category">{["all", "bettas", "aquariums", "food"].map(value => <Link href={`/new-arrivals?category=${value}`} key={value} aria-current={category === value ? "page" : undefined}>{value[0].toUpperCase() + value.slice(1)}</Link>)}</nav>
         {(category === "all" || category === "bettas") && <ProductGrid products={products} />}
-        {(category === "all" || category === "aquariums" || category === "food") && <div className="product-grid display-products">{[...(category !== "food" ? aquariumImages : []), ...(category !== "aquariums" ? foodImages : [])].map(item => <article className="product-card" key={item.src}><div className="card-label"><span>{item.name}</span><span>Preview</span></div><div className="product-image-frame"><Image src={item.src} alt={item.alt} fill sizes="(max-width:720px) 100vw, 33vw" style={{objectFit:"contain"}} /></div><div className="card-facts"><span>Details coming soon</span></div></article>)}</div>}
+        {(category === "all" || category === "aquariums" || category === "food") && <div className="product-grid display-products">{[...(category !== "food" ? aquariumImages : []), ...(category !== "aquariums" ? foodImages : [])].map(item => <article className="product-card" key={item.src}><div className="card-label"><span>{item.name}</span><span>Preview</span></div><div className="product-image-frame"><Image src={item.src} alt={item.alt} fill sizes="(max-width:720px) 100vw, 33vw" style={{objectFit:"contain"}} /></div><div className="card-facts"><span>Sample price</span><span>{formatUsd(item.priceCents)}</span></div></article>)}</div>}
       </section>
     </>
   );

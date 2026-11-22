@@ -41,3 +41,10 @@ body:not(:has(.gallery-home)) .gallery-brand, body:not(:has(.gallery-home)) .gal
 .gallery-tabs button { border: 0; background: #eaeae6; padding: 7px 12px; font: 12px Arial, sans-serif; color: #171714; cursor: pointer; }
 .gallery-tabs button[aria-pressed=true] { background: #171714; color: #fafaf8; }
 @media(max-width:600px) { .gallery-tabs { top: 65px; } }
+
+.gallery-stage:focus { outline: none; }
+.gallery-stage:focus-visible { outline: none; }
+@media (min-width: 601px) {
+  .gallery-tabs { top: max(80px, calc(50svh - 24svh - 85px)); gap: 6px; }
+  .gallery-tabs button { padding: 13px 25px; min-height: 46px; font-size: 16px; }
+}
