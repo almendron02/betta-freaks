@@ -19,7 +19,7 @@ export function OwnerProductList({
         <span className="eyebrow">Inventory is empty</span>
         <h2>Add the first Betta Freaks listing.</h2>
         <p>Start as a draft, attach the exact product image, then publish when stock is ready.</p>
-        <Link className="button button-coral" href={`${basePath}/new`}>Add a product</Link>
+        <Link className="button button-primary" href={`${basePath}/new`}>Add a product</Link>
       </div>
     );
   }

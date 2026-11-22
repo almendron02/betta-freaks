@@ -16,7 +16,7 @@ export default function OwnerProductsPreviewPage() {
     <section className="owner-shell page-shell">
       <div className="owner-topbar">
         <div><span className="eyebrow">Safe owner preview</span><h1>Products</h1><p className="owner-subtitle">This shows the planned management workflow without exposing or changing live data.</p></div>
-        <Link className="button button-coral" href="/preview/owner/products/new">Preview product form</Link>
+        <Link className="button button-primary" href="/preview/owner/products/new">Preview product form</Link>
       </div>
       <OwnerProductList products={previewManagedProducts} preview />
     </section>

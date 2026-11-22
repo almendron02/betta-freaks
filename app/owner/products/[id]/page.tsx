@@ -14,11 +14,12 @@ export const metadata: Metadata = {
 };
 
 export default async function EditOwnerProductPage({ params }: Props) {
+  const { id } = await params;
   const access = await getOwnerAccess();
-  if (access.state === "signed_out") redirect("/auth/sign-in");
+  if (access.state === "signed_out") redirect(`/auth/sign-in?next=/owner/products/${id}`);
   if (access.state !== "authorized") redirect("/owner");
 
-  const product = await getManagedProduct((await params).id);
+  const product = await getManagedProduct(id);
   if (!product) notFound();
   const action = updateOwnerProduct.bind(null, product.id);
 

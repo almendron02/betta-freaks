@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import { CartProvider } from "@/components/cart/cart-provider";
+import { SiteMotionProvider } from "@/components/motion/motion-provider";
 import { SiteFooter } from "@/components/storefront/site-footer";
-import { SiteHeader } from "@/components/storefront/site-header";
+import { GalleryMenu } from "@/components/storefront/gallery-menu";
+import { CardMotion } from "@/components/motion/card-motion";
 
 import "./globals.css";
 
@@ -23,11 +25,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body>
-        <CartProvider>
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
-        </CartProvider>
+        <SiteMotionProvider>
+          <CartProvider>
+            <CardMotion />
+            <main>{children}</main>
+            <SiteFooter />
+            <GalleryMenu />
+          </CartProvider>
+        </SiteMotionProvider>
       </body>
     </html>
   );

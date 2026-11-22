@@ -37,6 +37,7 @@ export default async function ProductPage({ params }: Props) {
               fill
               preload
               sizes="(max-width: 760px) 100vw, 52vw"
+              style={{ objectPosition: product.imagePosition ?? "50% 50%" }}
             />
             <span className="media-badge">Exact fish</span>
             {product.isDemo ? <span className="demo-badge">Preview</span> : null}
@@ -45,7 +46,7 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="product-detail-copy">
           <nav className="breadcrumbs" aria-label="Breadcrumb">
-            <Link href="/new-arrivals">New fish</Link><span>/</span><span>{product.shortName}</span>
+            <Link href="/new-arrivals">Collection</Link><span>/</span><span>{product.shortName}</span>
           </nav>
           <p className="product-overline">{product.sex} · one available</p>
           <h1>{product.name}</h1>
@@ -81,8 +82,8 @@ export default async function ProductPage({ params }: Props) {
 
       <section className="product-story page-shell">
         <span className="section-label">ABOUT</span>
-        <div className="product-story-image">
-          <Image src={product.image} alt="" fill sizes="(max-width: 760px) 100vw, 38vw" />
+        <div className="product-story-image" data-tilt>
+          <Image src={product.image} alt="" fill sizes="(max-width: 760px) 100vw, 38vw" style={{ objectPosition: product.imagePosition ?? "50% 50%" }} />
         </div>
         <p>
           {product.shortName} is individually selected and photographed. What

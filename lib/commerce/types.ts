@@ -28,6 +28,7 @@ export type Product = {
   isDemo: boolean;
   image: string;
   imageAlt: string;
+  imagePosition?: string;
   imageTone?: "natural" | "warm" | "cool";
 };
 

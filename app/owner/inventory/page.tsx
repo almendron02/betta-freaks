@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default async function OwnerInventoryPage() {
   const access = await getOwnerAccess();
-  if (access.state === "signed_out") redirect("/auth/sign-in");
+  if (access.state === "signed_out") redirect("/auth/sign-in?next=/owner/inventory");
   if (access.state !== "authorized") redirect("/owner");
 
   const [products, movements] = await Promise.all([
