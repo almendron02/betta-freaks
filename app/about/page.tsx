@@ -1,37 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/storefront/page-hero";
-
 export const metadata: Metadata = { title: "Our Story" };
-
 export default function AboutPage() {
-  return (
-    <>
-      <PageHero eyebrow="Our story" title="About Betta Freaks" description="A U.S.-based betta shop focused on remarkable varieties and individually presented Betta splendens." image="/media/figma/about-betta.png" imageAlt="Blue and orange betta fish in profile" />
-    <section className="about-project page-shell editorial-about">
-      <div className="about-project-title">
-        <span>ABOUT</span>
-        <span>BETTA FREAKS</span>
-      </div>
-      <p className="about-project-copy">
-        A U.S.-based betta shop and specialist breeder focused on selective
-        breeding, remarkable varieties, and show-quality Betta splendens.
-      </p>
-      <div className="about-project-detail">
-        <span>(OUR FOCUS)</span>
-        <p>
-          We breed, import, and select standout fish so every keeper can see the
-          diversity of this hobby up close. Every live listing represents one
-          exact fish.
-        </p>
-      </div>
-      <nav className="project-roadmap" aria-label="Site roadmap">
-        <Link href="/"><span>(01)</span><strong>Main page</strong></Link>
-        <Link href="/new-arrivals"><span>(02)</span><strong>New fish</strong></Link>
-        <Link href="/shipping"><span>(03)</span><strong>Shipping</strong></Link>
-        <Link href="/cart"><span>(04)</span><strong>Bag</strong></Link>
-      </nav>
+  return <>
+    <PageHero eyebrow="Our story / 01" title="A fascination with fins." description="A U.S.-based betta shop and specialist breeder. Remarkable varieties, individual character, and a shared love of Betta splendens." image="/media/figma/about-betta.png" imageAlt="Blue and orange betta fish in profile" />
+    <section className="story-grid page-shell">
+      <article className="story-card" data-tilt><div className="card-label"><span>01 / The individual</span><span>↗</span></div><div className="story-image"><Image src="/media/figma/nemo-galaxy.png" alt="Multicolor Nemo Galaxy betta" fill sizes="(max-width:720px) 90vw, 40vw" /></div><h2>One fish. Entirely its own.</h2><p>We breed, import, and select standout fish. Every live exact-fish listing shows the individual available to take home.</p></article>
+      <article className="story-card" data-tilt><div className="card-label"><span>02 / The hobby</span><span>↗</span></div><div className="story-image"><Image src="/media/figma/super-red.png" alt="Crimson red betta fish" fill sizes="(max-width:720px) 90vw, 40vw" /></div><h2>Selected with intention.</h2><p>Selective breeding, distinctive colors, and clear specimen details bring the diversity of this hobby into focus.</p><Link className="text-link" href="/new-arrivals">Explore the collection ↗</Link></article>
     </section>
-    </>
-  );
+  </>;
 }

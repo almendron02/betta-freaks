@@ -23,7 +23,7 @@ export default async function OwnerProductsPage() {
         <div><span className="eyebrow">Owner workspace</span><h1>Products</h1><p className="owner-subtitle">Create drafts, control live stock, and publish exact-fish listings.</p></div>
         <div className="owner-topbar-actions">
           <Link className="button button-outline" href="/owner/inventory">Inventory</Link>
-          <Link className="button button-coral" href="/owner/products/new">Add product</Link>
+          <Link className="button button-primary" href="/owner/products/new">Add product</Link>
         </div>
       </div>
       <OwnerProductList products={products} />

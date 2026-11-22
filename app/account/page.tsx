@@ -52,12 +52,12 @@ export default async function AccountPage() {
     <section className="account-shell page-shell">
       <div className="account-hero">
         <div>
-          <span className="showroom-eyebrow">YOUR BETTA FREAKS ACCOUNT</span>
+          <span className="eyebrow">YOUR BETTA FREAKS ACCOUNT</span>
           <h1>Welcome back.</h1>
           <p>{session.email}</p>
         </div>
         <div className="account-hero-actions">
-          {session.isStaff ? <Link className="button button-coral" href="/owner">Owner workspace</Link> : null}
+          {session.isStaff ? <Link className="button button-primary" href="/owner">Owner workspace</Link> : null}
           <SignOutButton />
         </div>
       </div>

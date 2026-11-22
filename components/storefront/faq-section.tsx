@@ -35,18 +35,18 @@ export function FaqSection() {
   const prefersReduced = useReducedMotion();
 
   return (
-    <section className="showroom-faq" id="faq">
-      <div className="showroom-faq-intro">
-        <span className="showroom-eyebrow">FAQ</span>
-        <AnimatedHeading as="h2" inView text="Frequently asked questions" />
+    <section className="faq" id="faq">
+      <div className="faq-intro">
+        <span className="eyebrow">FAQ</span>
+        <AnimatedHeading as="h1" inView text="Frequently asked questions" />
         <p>Essential care guidance and clear links to the store policies that apply to live-fish purchases.</p>
       </div>
-      <div className="showroom-faq-list">
+      <div className="faq-list">
         {questions.map((item, index) => {
           const isOpen = openIndex === index;
           return (
             <motion.article
-              className={`showroom-faq-item${isOpen ? " is-open" : ""}`}
+              className={`faq-item${isOpen ? " is-open" : ""}`}
               key={item.question}
               initial={false}
               whileInView={prefersReduced ? undefined : { opacity: [0.76, 1], y: [motionTokens.distance.sm, 0] }}

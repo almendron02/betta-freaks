@@ -42,7 +42,7 @@ export function InventoryWorkspace({
         </div>
         <div className="owner-topbar-actions">
           <Link className="button button-outline" href={ownerPath}><ArrowLeft size={16} /> Dashboard</Link>
-          <Link className="button button-coral" href={productsPath}>Products</Link>
+          <Link className="button button-primary" href={productsPath}>Products</Link>
         </div>
       </div>
 
@@ -64,7 +64,7 @@ export function InventoryWorkspace({
             <div className="empty-state owner-empty-state">
               <h3>No products to adjust yet.</h3>
               <p>Create the first listing, then use this workspace for every stock correction.</p>
-              <Link className="button button-coral" href={`${productsPath}/new`}>Add a product</Link>
+              <Link className="button button-primary" href={`${productsPath}/new`}>Add a product</Link>
             </div>
           ) : (
             <div className="inventory-adjustment-list">

@@ -24,7 +24,7 @@ export default async function OwnerPage() {
         <h1>{access.state === "forbidden" ? "Owner access required" : "Connect Supabase"}</h1>
         <p>{access.state === "forbidden" ? `The signed-in account ${access.email ?? ""} does not have an active staff record.` : "Authentication and owner authorization are ready in the codebase, but project credentials have not been added yet."}</p>
         <div className="auth-card-actions">
-          <Link className="button button-coral" href="/preview/owner">View safe dashboard preview</Link>
+          <Link className="button button-primary" href="/preview/owner">View safe dashboard preview</Link>
           {access.state === "forbidden" ? <SignOutButton /> : null}
         </div>
       </div>

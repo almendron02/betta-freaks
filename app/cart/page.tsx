@@ -9,7 +9,7 @@ export default function CartPage() {
   return (
     <>
       <PageHero eyebrow="Secure checkout" title="Your cart" description="Review your selected fish before inventory and shipping are verified at checkout." compact />
-    <section className="cart-page showroom-cart-page">
+    <section className="cart-page page-shell">
       <CartView />
     </section>
     </>

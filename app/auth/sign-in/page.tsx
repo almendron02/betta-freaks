@@ -29,10 +29,10 @@ export default async function SignInPage({
   return (
     <>
       <PageHero eyebrow={ownerAccess ? "Protected staff access" : "Your account"} title={ownerAccess ? "Owner sign in" : "Welcome back"} description={ownerAccess ? "Authorized staff can securely continue to the store workspace." : "Use a one-time email link to access your profile and orders."} compact />
-    <section className="auth-section page-shell editorial-form-section">
+    <section className="auth-section page-shell form-section">
       <div className="auth-card">
-        <span className="showroom-eyebrow">{ownerAccess ? "PROTECTED STAFF ACCESS" : "YOUR BETTA FREAKS ACCOUNT"}</span>
-        <h1>{ownerAccess ? "Owner sign in" : "Sign in. No password needed."}</h1>
+        <span className="eyebrow">{ownerAccess ? "PROTECTED STAFF ACCESS" : "YOUR BETTA FREAKS ACCOUNT"}</span>
+        <h2>{ownerAccess ? "Owner sign in" : "Sign in. No password needed."}</h2>
         <p>
           {ownerAccess
             ? "Use the email address tied to your owner invitation. Staff permissions are verified again before any store data can be changed."

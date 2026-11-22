@@ -1,5 +1,5 @@
 body:has(.gallery-home) { background: #fafaf8; overflow: hidden; }
-body:has(.gallery-home) .site-header, body:has(.gallery-home) .site-footer { display: none; }
+body:has(.gallery-home) .site-footer { display: none; }
 .gallery-home { position: fixed; inset: 0; background: #fafaf8; color: #171714; font-family: Arial, Helvetica, sans-serif; }
 .gallery-stage { position: absolute; inset: 105px 0 115px; overflow: hidden; touch-action: none; cursor: grab; outline-offset: -3px; }
 .gallery-stage:active { cursor: grabbing; }
@@ -50,3 +50,6 @@ body:has(.gallery-home) .site-header, body:has(.gallery-home) .site-footer { dis
 
 .gallery-stage { user-select: none; }
 .gallery-stage img { -webkit-user-drag: none; }
+
+body:not(:has(.gallery-home)) .gallery-brand, body:not(:has(.gallery-home)) .gallery-edition { background: #fafaf8; box-shadow: 0 0 0 8px #fafaf8; }
+.gallery-menu-links { max-height: calc(100dvh - 110px); overflow-y: auto; }

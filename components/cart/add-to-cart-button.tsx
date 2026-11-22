@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { useCart } from "@/components/cart/cart-provider";
 import type { Product } from "@/lib/commerce/types";
-import { motionTokens, springs } from "@/lib/motion-tokens";
+import { motionTokens } from "@/lib/motion-tokens";
 
 export function AddToCartButton({
   product,
@@ -31,7 +31,7 @@ export function AddToCartButton({
       whileHover={prefersReduced || unavailable || inCart ? undefined : { y: -motionTokens.distance.xs }}
       whileTap={prefersReduced || unavailable || inCart ? undefined : { scale: motionTokens.scale.press }}
       animate={justAdded && !prefersReduced ? { scale: [1, motionTokens.scale.pop, 1] } : { scale: 1 }}
-      transition={springs.snappy}
+      transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
       onClick={() => {
         addProduct(product);
         setJustAdded(true);

@@ -22,7 +22,7 @@ export function CartView() {
         <ShoppingCart size={28} />
         <h2>Your cart is ready for a fish.</h2>
         <p>Browse the live listings and claim an exact specimen.</p>
-        <Link href="/new-arrivals" className="showroom-pill">Browse live fish</Link>
+        <Link href="/new-arrivals" className="button">Browse live fish</Link>
       </div>
     );
   }
@@ -61,7 +61,7 @@ export function CartView() {
               <div className="cart-item-copy">
                 <h2>{item.name}</h2>
                 <p>{item.isExactFish ? "Show-quality · exact specimen" : `Quantity ${item.quantity}`}</p>
-                {item.isExactFish ? <strong>EXACT FISH SHOWN</strong> : null}
+                {item.isExactFish ? <strong>Exact fish shown</strong> : null}
               </div>
               <div className="cart-item-price">
                 <span>Unit price</span>
@@ -77,7 +77,7 @@ export function CartView() {
       </div>
 
       <aside className="order-summary">
-        <h2>ORDER SUMMARY</h2>
+        <h2>Order summary</h2>
         <div className="summary-row"><span>Subtotal</span><strong>{formatUsd(subtotal)}</strong></div>
         <div className="summary-row"><span>Insured shipping</span><span>Calculated by Stripe</span></div>
         <div className="summary-row"><span>Tax</span><span>Calculated at checkout</span></div>
@@ -85,7 +85,7 @@ export function CartView() {
           <label htmlFor="promo-code">Promo code</label>
           <div><input id="promo-code" placeholder="Enter code" disabled /><button type="button" disabled>Apply</button></div>
         </div>
-        <div className="summary-row summary-total"><span>TOTAL</span><strong>{formatUsd(subtotal)}</strong></div>
+        <div className="summary-row summary-total"><span>Total</span><strong>{formatUsd(subtotal)}</strong></div>
         <button type="button" className="summary-checkout" onClick={beginCheckout} disabled={pending}>
           {pending ? "Checking inventory…" : "Proceed to checkout"} <ArrowRight />
         </button>
