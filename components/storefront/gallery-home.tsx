@@ -30,18 +30,42 @@ export function GalleryHome() {
     let previousY = 0;
     let previousX = 0;
     let dragging = false;
+    const pointer = { x: 0, y: 0 };
+    const easedPointer = { x: 0, y: 0 };
     const draw = () => {
+      easedPointer.x += (pointer.x - easedPointer.x) * 0.075;
+      easedPointer.y += (pointer.y - easedPointer.y) * 0.075;
+      element.style.setProperty("--portrait-x", `${-easedPointer.y * 5}deg`);
+      element.style.setProperty("--portrait-y", `${easedPointer.x * 6}deg`);
+      element.style.setProperty("--reel-y", `${easedPointer.y * 32}px`);
       rotation.current += (target.current - rotation.current) * (reduced.matches ? 1 : 0.085);
       if (Math.abs(target.current - rotation.current) < 0.01) rotation.current = target.current;
       ring.current?.style.setProperty("--rotation", `${rotation.current}deg`);
       const index = ((Math.round(-rotation.current / step) % pictures.length) + pictures.length) % pictures.length;
       if (index !== lastIndex) { lastIndex = index; setActive(index); }
-      frame = Math.abs(target.current - rotation.current) > 0.01 ? requestAnimationFrame(draw) : 0;
+      const moving = Math.abs(target.current - rotation.current) > 0.01
+        || Math.abs(pointer.x - easedPointer.x) > 0.001
+        || Math.abs(pointer.y - easedPointer.y) > 0.001;
+      frame = moving ? requestAnimationFrame(draw) : 0;
     };
     const move = (amount: number) => {
       target.current += amount;
       if (!frame) frame = requestAnimationFrame(draw);
     };
+    const followPointer = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse" || reduced.matches) return;
+      pointer.x = Math.max(-1, Math.min(1, event.clientX / window.innerWidth * 2 - 1));
+      pointer.y = Math.max(-1, Math.min(1, event.clientY / window.innerHeight * 2 - 1));
+      if (!frame) frame = requestAnimationFrame(draw);
+    };
+    const resetPointer = () => {
+      pointer.x = 0; pointer.y = 0;
+      if (!frame) frame = requestAnimationFrame(draw);
+    };
+    window.addEventListener("pointermove", followPointer);
+    document.documentElement.addEventListener("pointerleave", resetPointer);
+    window.addEventListener("blur", resetPointer);
+    reduced.addEventListener("change", resetPointer);
     const wheel = (event: WheelEvent) => {
       if (event.ctrlKey || (event.target as HTMLElement).closest(".gallery-menu")) return;
       event.preventDefault();
@@ -79,6 +103,10 @@ export function GalleryHome() {
     element.addEventListener("gallery-step", select);
     return () => {
       cancelAnimationFrame(frame);
+      window.removeEventListener("pointermove", followPointer);
+      document.documentElement.removeEventListener("pointerleave", resetPointer);
+      window.removeEventListener("blur", resetPointer);
+      reduced.removeEventListener("change", resetPointer);
       window.removeEventListener("wheel", wheel);
       element.removeEventListener("pointerdown", down);
       element.removeEventListener("pointermove", drag);
@@ -93,12 +121,14 @@ export function GalleryHome() {
   return (
     <section className="gallery-home" aria-label="Betta Freaks photo gallery">
       <div className="gallery-stage" ref={stage} tabIndex={0} aria-roledescription="carousel" aria-label="Fish gallery. Scroll, swipe, or use arrow keys to rotate.">
+        <div className="gallery-perspective">
+          <div className="gallery-feature">
         <div className="gallery-backdrop" aria-hidden="true">
           {pictures.map((picture, i) => <Image key={picture.src} src={picture.src} alt="" fill sizes="100vw" priority={i === 0} className={i === active ? "is-active" : ""} />)}
         </div>
         <div className="gallery-caption"><span>{pictures[active].name}</span><Link href="/new-arrivals">View collection ↗</Link></div>
-        <div className="gallery-perspective" aria-hidden="true">
-          <div className="gallery-ring" ref={ring}>
+          </div>
+          <div className="gallery-ring" ref={ring} aria-hidden="true">
             {pictures.map((picture, i) => <div className="gallery-panel" key={picture.src} style={{ transform: `rotateY(${i * step}deg) translateZ(var(--radius))` }}><Image src={picture.src} alt="" fill sizes="240px" /></div>)}
           </div>
         </div>

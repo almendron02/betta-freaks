@@ -8,8 +8,10 @@ body:has(.gallery-home) .site-header, body:has(.gallery-home) .site-footer { dis
 .gallery-backdrop img.is-active { opacity: 1; }
 .gallery-caption { position: absolute; inset: 0 0 auto; height: 28px; display: flex; justify-content: space-between; align-items: center; padding: 3px 22px; background: #eaeae6; font-size: 13px; z-index: 3; }
 .gallery-caption a { background: #171714; color: white; padding: 2px 6px; }
-.gallery-perspective { position: absolute; inset: 28px 0 0; perspective: 1250px; display: grid; place-items: center; pointer-events: none; }
-.gallery-ring { --radius: clamp(220px, 30vw, 480px); --rotation: 0deg; position: relative; width: clamp(100px, 13vw, 190px); height: clamp(140px, 18vw, 260px); transform-style: preserve-3d; transform: rotateX(-8deg) rotateY(var(--rotation)); will-change: transform; }
+.gallery-perspective { position: absolute; inset: 0; perspective: 1250px; transform-style: preserve-3d; display: grid; place-items: center; pointer-events: none; }
+.gallery-feature { position: absolute; inset: 0; transform: rotateX(var(--portrait-x, 0deg)) rotateY(var(--portrait-y, 0deg)); background: #e4e4df; will-change: transform; }
+.gallery-feature a { pointer-events: auto; }
+.gallery-ring { --radius: clamp(220px, 30vw, 480px); --rotation: 0deg; position: relative; width: clamp(100px, 13vw, 190px); height: clamp(140px, 18vw, 260px); transform-style: preserve-3d; transform: translateY(var(--reel-y, 0px)) rotateX(-8deg) rotateY(var(--rotation)); will-change: transform; }
 .gallery-panel { position: absolute; inset: 0; backface-visibility: visible; background: #dcded9; box-shadow: 0 4px 25px #00000015; }
 .gallery-panel img { object-fit: cover; }
 .gallery-controls { position: absolute; bottom: 17px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; color: white; font-size: 11px; font-variant-numeric: tabular-nums; z-index: 4; }
@@ -38,8 +40,9 @@ body:has(.gallery-home) .site-header, body:has(.gallery-home) .site-footer { dis
 /* The featured portrait stays centered while the surrounding ring rotates. */
 @media (min-width: 601px) {
   .gallery-stage { inset: 90px 0 105px; }
-  .gallery-backdrop { width: min(28vw, 420px); height: min(53vh, 510px); inset: 50% auto auto 50%; transform: translate(-50%, -50%); }
-  .gallery-caption { width: min(28vw, 420px); left: 50%; top: calc(50% - min(26.5vh, 255px) - 28px); transform: translateX(-50%); padding-inline: 5px; }
+  .gallery-feature { width: min(28vw, 420px); height: calc(min(53vh, 510px) + 28px); inset: auto; }
+  .gallery-backdrop { inset: 28px 0 0; }
+  .gallery-caption { padding-inline: 5px; }
   .gallery-ring { width: clamp(100px, 9vw, 140px); height: clamp(140px, 12.5vw, 196px); }
   .gallery-controls { bottom: 5px; color: #171714; }
   .gallery-controls button { color: #171714; border-color: #17171430; background: transparent; }
