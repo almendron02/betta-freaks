@@ -1,4 +1,3 @@
-import localFont from "next/font/local";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
@@ -9,15 +8,6 @@ import { GalleryMenu } from "@/components/storefront/gallery-menu";
 import { CardMotion } from "@/components/motion/card-motion";
 
 import "./globals.css";
-
-const outfit = localFont({
-  src: [
-    { path: "./fonts/outfit-400.ttf", weight: "400" },
-    { path: "./fonts/outfit-600.ttf", weight: "600" },
-    { path: "./fonts/outfit-800.ttf", weight: "800" },
-  ], variable: "--font-street-body", display: "swap",
-});
-const archivo = localFont({ src: "./fonts/archivo-black.ttf", variable: "--font-street-display", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -33,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${outfit.variable} ${archivo.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth">
       <body>
         <SiteMotionProvider>
           <CartProvider>
