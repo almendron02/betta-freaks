@@ -1,40 +1,13 @@
-import type { Metadata } from "next";
 import type { ReactNode } from "react";
-
+import Link from "next/link";
 import { CartProvider } from "@/components/cart/cart-provider";
-import { SiteMotionProvider } from "@/components/motion/motion-provider";
-import { SiteFooter } from "@/components/storefront/site-footer";
-import { StoreHeader } from "@/components/storefront/store-header";
-import { CardMotion } from "@/components/motion/card-motion";
-
 import "./globals.css";
-import "./store.css";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
-  title: {
-    default: "Betta Freaks | Show-quality betta fish",
-    template: "%s | Betta Freaks",
-  },
-  description:
-    "A U.S.-based betta fish shop and specialist breeder focused on selectively bred, show-quality Betta splendens.",
-};
-
-export default function RootLayout({ children }: { children: ReactNode }) {
-  return (
-    <html lang="en" data-scroll-behavior="smooth">
-      <body>
-        <SiteMotionProvider>
-          <CartProvider>
-            <StoreHeader />
-            <CardMotion />
-            <main>{children}</main>
-            <SiteFooter />
-          </CartProvider>
-        </SiteMotionProvider>
-      </body>
-    </html>
-  );
+export const metadata = { title: "Betta Freaks", description: "Discover bettas, explore their colors, and find the essentials for their tanks." };
+export default function Layout({children}:{children:ReactNode}) {
+  return <html lang="en"><body><CartProvider>
+    <header className="top"><Link className="brand" href="/" aria-label="Betta Freaks home">Betta Freaks</Link><nav aria-label="Main"><Link href="/collection">Collection</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></nav><Link className="pill" href="/checkout">Checkout ↗︎</Link></header>
+    <main>{children}</main>
+    <footer><Link href="/" className="brand">Betta Freaks</Link><nav aria-label="Footer">{["Home","About","Collection","Contact","Checkout"].map(label=><Link key={label} href={label==="Home"?"/":"/"+label.toLowerCase()}>{label}</Link>)}</nav></footer>
+  </CartProvider></body></html>;
 }
