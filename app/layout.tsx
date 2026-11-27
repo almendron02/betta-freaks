@@ -4,10 +4,11 @@ import type { ReactNode } from "react";
 import { CartProvider } from "@/components/cart/cart-provider";
 import { SiteMotionProvider } from "@/components/motion/motion-provider";
 import { SiteFooter } from "@/components/storefront/site-footer";
-import { GalleryMenu } from "@/components/storefront/gallery-menu";
+import { StoreHeader } from "@/components/storefront/store-header";
 import { CardMotion } from "@/components/motion/card-motion";
 
 import "./globals.css";
+import "./store.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -27,10 +28,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <SiteMotionProvider>
           <CartProvider>
+            <StoreHeader />
             <CardMotion />
             <main>{children}</main>
             <SiteFooter />
-            <GalleryMenu />
           </CartProvider>
         </SiteMotionProvider>
       </body>
