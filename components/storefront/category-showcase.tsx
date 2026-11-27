@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Snail } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const categories = [
   { label: "Betta", text: "Discover marbled patterns, bright solids, and long, flowing fins.", image: "/media/catalog-red-blue-betta-cutout.png", href: "/collection?category=Bettas" },
@@ -14,15 +14,64 @@ const categories = [
 
 export function CategoryShowcase() {
   const [selected, setSelected] = useState(0);
-  const current = categories[selected];
-  return <section className="chapter showcase"><h2>A closer look<br/>at every fin.</h2><p>Meet the fish, then explore the little world around it.</p>
-    <div className="explorer"><div className="choices" role="group" aria-label="Explore by category">{categories.map((category, i) =>
-      <button key={category.label} aria-pressed={i === selected} aria-controls="category-preview" onClick={() => setSelected(i)}>
-        <strong>{category.label}</strong>{i === selected && <span>{category.text}</span>}
-      </button>)}</div>
-      <div className="preview-pane" id="category-preview"><div key={current.label} className="preview-content">
-        {current.image ? <Image src={current.image} alt={current.label} width={560} height={360}/> : <Snail size={130} strokeWidth={1} aria-hidden="true"/>}
-        <Link className="pill" href={current.href}>{current.image ? 'Explore '+current.label : 'Ask about snails'} ↗︎</Link>
-      </div></div>
-    </div></section>;
+  const previews = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const panels = Array.from(previews.current?.querySelectorAll("article") ?? []);
+    if (!panels.length) return;
+    let frame = 0;
+
+    function updateCategory() {
+      frame = 0;
+      const anchorOffset = Number.parseFloat(getComputedStyle(panels[0]).scrollMarginTop);
+      const readingLine = Math.max(window.innerHeight * 0.5, anchorOffset + 2);
+      let active = 0;
+      for (const [index, panel] of panels.entries()) {
+        if (panel.getBoundingClientRect().top <= readingLine) active = index;
+      }
+      setSelected(active);
+    }
+
+    function scheduleUpdate() {
+      if (!frame) frame = requestAnimationFrame(updateCategory);
+    }
+
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
+  }, []);
+
+  return (
+    <section className="chapter showcase">
+      <h2>A closer look<br />at every fin.</h2>
+      <p>Meet the fish, then explore the little world around it.</p>
+      <div className="explorer">
+        <nav className="choices" aria-label="Explore by category">
+          {categories.map(({ label }, index) => (
+            <a key={label} href={`#showcase-${label.toLowerCase()}`} aria-current={index === selected ? "location" : undefined}>
+              {label}
+            </a>
+          ))}
+        </nav>
+        <div className="category-previews" ref={previews}>
+          {categories.map(({ label, text, image, href }) => (
+            <article key={label} id={`showcase-${label.toLowerCase()}`} className="preview-pane" aria-label={label}>
+              {image ? (
+                <Image src={image} alt={label} width={560} height={360} />
+              ) : (
+                <Snail size={130} strokeWidth={1} aria-hidden="true" />
+              )}
+              <p>{text}</p>
+              <Link className="pill" href={href}>{image ? `Explore ${label}` : "Ask about snails"} ↗︎</Link>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
