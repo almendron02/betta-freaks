@@ -14,6 +14,7 @@ const categories = [
 
 export function CategoryShowcase() {
   const [selected, setSelected] = useState(0);
+  const sidebar = useRef<HTMLDivElement>(null);
   const previews = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,10 +37,18 @@ export function CategoryShowcase() {
       if (!frame) frame = requestAnimationFrame(updateCategory);
     }
 
+    const column = sidebar.current;
+    const observer = new ResizeObserver(() => {
+      if (column) column.parentElement?.style.setProperty("--sidebar-height", `${column.offsetHeight}px`);
+      scheduleUpdate();
+    });
+    if (column) observer.observe(column);
+
     scheduleUpdate();
     window.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate);
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
@@ -48,25 +57,28 @@ export function CategoryShowcase() {
 
   return (
     <section className="chapter showcase">
-      <h2>A closer look<br />at every fin.</h2>
-      <p>Meet the fish, then explore the little world around it.</p>
       <div className="explorer">
-        <nav className="choices" aria-label="Explore by category">
-          {categories.map(({ label }, index) => (
-            <a key={label} href={`#showcase-${label.toLowerCase()}`} aria-current={index === selected ? "location" : undefined}>
-              {label}
-            </a>
-          ))}
-        </nav>
+        <div className="showcase-sidebar" ref={sidebar}>
+          <h2>40+ Items to explore in our store. Expand your collection today.</h2>
+          <nav className="choices" aria-label="Explore by category">
+            {categories.map(({ label, text }, index) => (
+              <div className="category-choice" key={label}>
+                <a href={`#showcase-${label.toLowerCase()}`} aria-current={index === selected ? "location" : undefined}>
+                  {label}
+                </a>
+                {index === selected && <p>{text}</p>}
+              </div>
+            ))}
+          </nav>
+        </div>
         <div className="category-previews" ref={previews}>
-          {categories.map(({ label, text, image, href }) => (
+          {categories.map(({ label, image, href }) => (
             <article key={label} id={`showcase-${label.toLowerCase()}`} className="preview-pane" aria-label={label}>
               {image ? (
                 <Image src={image} alt={label} width={560} height={360} />
               ) : (
                 <Snail size={130} strokeWidth={1} aria-hidden="true" />
               )}
-              <p>{text}</p>
               <Link className="pill" href={href}>{image ? `Explore ${label}` : "Ask about snails"} ↗︎</Link>
             </article>
           ))}
