@@ -25,11 +25,22 @@ export function CategoryShowcase() {
     function updateCategory() {
       frame = 0;
       const anchorOffset = Number.parseFloat(getComputedStyle(panels[0]).scrollMarginTop);
-      const readingLine = Math.max(window.innerHeight * 0.5, anchorOffset + 2);
+      const viewportBottom = document.documentElement.clientHeight;
+      const viewportTop = Math.min(anchorOffset, viewportBottom * 0.8);
       let active = 0;
+      let mostVisible = 0;
+
       for (const [index, panel] of panels.entries()) {
-        if (panel.getBoundingClientRect().top <= readingLine) active = index;
+        const { top, bottom } = panel.getBoundingClientRect();
+        const visible = Math.min(bottom, viewportBottom) - Math.max(top, viewportTop);
+        if (visible > mostVisible) {
+          mostVisible = visible;
+          active = index;
+        } else if (mostVisible === 0 && bottom <= viewportTop) {
+          active = index;
+        }
       }
+
       setSelected(active);
     }
 

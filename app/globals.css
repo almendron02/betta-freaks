@@ -81,7 +81,8 @@ footer{border-top:1px solid #eee;margin-top:40px;padding-block:40px}footer nav{f
   letter-spacing: -.045em;
   transition: color .2s;
 }
-.choices a:hover, .choices a[aria-current="location"] {
+.choices a:hover { text-decoration: none; }
+.choices a[aria-current="location"] {
   color: var(--ink);
   text-decoration: none;
 }
