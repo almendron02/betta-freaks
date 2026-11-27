@@ -57,6 +57,8 @@ export function CategoryShowcase() {
 
   return (
     <section className="chapter showcase">
+      <h2>A closer look<br />at every fin.</h2>
+      <p>Meet the fish, then explore the little world around it.</p>
       <div className="explorer">
         <div className="showcase-sidebar" ref={sidebar}>
           <h2>40+ Items to explore in our store. Expand your collection today.</h2>
